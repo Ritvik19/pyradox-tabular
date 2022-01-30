@@ -37,3 +37,25 @@ class DeepAndCrossNetworkConfig:
         self.USE_EMBEDDINGS = use_embeddings
         self.EMBEDDING_DIM = embedding_dim
         self.NUM_CROSS_LAYERS = n_cross
+
+
+class TabTransformerConfig:
+    def __init__(
+        self,
+        num_outputs,
+        out_activation,
+        num_transformer_blocks,
+        num_heads,
+        mlp_hidden_units_factors,
+        use_column_embedding=True,
+        embedding_dim=32,
+        dropout_rate=0.3,
+    ):
+        self.NUM_OUT = num_outputs
+        self.OUT_ACTIVATION = out_activation
+        self.NUM_TRANSFORMER_BLOCKS = num_transformer_blocks
+        self.NUM_HEADS = num_heads
+        self.MLP_HIDDEN_UNITS_FACTORS = mlp_hidden_units_factors
+        self.USE_COLUMN_EMBEDDING = use_column_embedding
+        self.EMBEDDING_DIM = embedding_dim
+        self.DROPOUT_RATE = dropout_rate

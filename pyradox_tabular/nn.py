@@ -3,3 +3,4 @@ from .deep_wide_cross import (
     DeepTabularNetwork,
     WideAndDeepTabularNetwork,
 )
+from .tab_tansformer import TabTransformer
