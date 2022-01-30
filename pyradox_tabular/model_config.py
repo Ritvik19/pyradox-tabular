@@ -59,3 +59,18 @@ class TabTransformerConfig:
         self.USE_COLUMN_EMBEDDING = use_column_embedding
         self.EMBEDDING_DIM = embedding_dim
         self.DROPOUT_RATE = dropout_rate
+
+
+class NeuralDecisionTreeConfig:
+    def __init__(self, depth, used_features_rate, num_classes):
+        self.DEPTH = depth
+        self.USED_FEATURES_RATE = used_features_rate
+        self.NUM_CLASSES = num_classes
+
+
+class NeuralDecisionForestConfig:
+    def __init__(self, num_trees, depth, used_features_rate, num_classes):
+        self.NUM_TREES = num_trees
+        self.DEPTH = depth
+        self.USED_FEATURES_RATE = used_features_rate
+        self.NUM_CLASSES = num_classes
