@@ -5,7 +5,7 @@ from pyradox_tabular.nn import DeepAndCrossTabularNetwork
 from tensorflow.data import Dataset
 
 
-def test_dense_net():
+def test_deep_and_cross_net():
     x_train, y_train, x_valid, y_valid = pytest.get_boston_df()
     data_config = DataConfig(
         numeric_feature_names=["CRIM", "ZN", "INDUS", "NOX", "RM", "AGE", "DIS", "TAX", "PTRATIO", "B", "LSTAT"],

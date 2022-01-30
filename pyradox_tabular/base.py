@@ -44,11 +44,11 @@ class NetworkInputs:
             else:
                 encoded_feature = L.Reshape((1,), name=f"{prefix}{feature_name}_reshape")(inputs[feature_name])
                 num_features.append(encoded_feature)
-        print(concat_features)
+
         features = (
             L.Concatenate(name=f"{prefix}inputs_concatenate")(cat_features + num_features)
             if concat_features
             else (cat_features, num_features)
         )
-        print(features)
+
         return features

@@ -5,7 +5,7 @@ from pyradox_tabular.nn import WideAndDeepTabularNetwork
 from tensorflow.data import Dataset
 
 
-def test_wide_and_dense_net():
+def test_wide_and_deep_net():
     x_train, y_train, x_valid, y_valid = pytest.get_boston_df()
     data_config = DataConfig(
         numeric_feature_names=["CRIM", "ZN", "INDUS", "NOX", "RM", "AGE", "DIS", "TAX", "PTRATIO", "B", "LSTAT"],
