@@ -6,7 +6,7 @@ from tensorflow.data import Dataset
 
 
 def test_neural_decision_tree():
-    x_train, y_train, x_valid, y_valid = pytest.get_boston_df_clf()
+    x_train, y_train, x_valid, y_valid = pytest.get_clf_df()
     data_config = DataConfig(
         numeric_feature_names=[
             "CRIM",

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyradox-tabular"
-version = "0.3.0"
+version = "0.3.1"
 description = "State of the Art Neural Networks for Tabular Deep Learning"
 authors = ["Ritvik19 <rastogiritvik99@gmail.com>"]
 readme = "README.md"
@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.8"
 tensorflow = "2.6.0"
+tensorflow-probability = "0.15.0"
+tensorflow-addons = "0.15.0"
 
 [tool.poetry.dev-dependencies]
 

@@ -4,7 +4,7 @@ import pandas as pd
 import tensorflow as tf
 
 
-def get_boston_df():
+def get_reg_df():
     features = ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"]
     (x_train, y_train), (x_valid, y_valid) = tf.keras.datasets.boston_housing.load_data()
     x_train = pd.DataFrame(x_train, columns=features)
@@ -17,7 +17,7 @@ def get_boston_df():
     return x_train, y_train, x_valid, y_valid
 
 
-def get_boston_df_clf():
+def get_clf_df():
     features = ["CRIM", "ZN", "INDUS", "CHAS", "NOX", "RM", "AGE", "DIS", "RAD", "TAX", "PTRATIO", "B", "LSTAT"]
     (x_train, y_train), (x_valid, y_valid) = tf.keras.datasets.boston_housing.load_data()
     x_train = pd.DataFrame(x_train, columns=features)
@@ -33,5 +33,5 @@ def get_boston_df_clf():
     return x_train, y_train, x_valid, y_valid
 
 
-sys.modules["pytest"].get_boston_df = get_boston_df
-sys.modules["pytest"].get_boston_df_clf = get_boston_df_clf
+sys.modules["pytest"].get_reg_df = get_reg_df
+sys.modules["pytest"].get_clf_df = get_clf_df
