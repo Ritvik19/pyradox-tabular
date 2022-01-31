@@ -24,6 +24,6 @@ def test_tab_transformer():
         ({col: x_valid[col].values.tolist() for col in data_config.FEATURE_NAMES}, y_valid.values.tolist())
     ).batch(1024)
 
-    model = TabTransformer.from_config(data_config, model_config, name="deep_network")
+    model = TabTransformer.from_config(data_config, model_config, name="tab_transformer")
     model.compile(optimizer="adam", loss="mse")
     model.fit(data_train, validation_data=data_valid)

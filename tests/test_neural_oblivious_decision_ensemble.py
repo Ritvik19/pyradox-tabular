@@ -34,6 +34,8 @@ def test_neural_oblivious_decision_ensemble():
         ({col: x_valid[col].values.tolist() for col in data_config.FEATURE_NAMES}, y_valid.values.tolist())
     ).batch(1024)
 
-    model = NeuralObliviousDecisionEnsemble.from_config(data_config, model_config, name="neural_decision_tree")
+    model = NeuralObliviousDecisionEnsemble.from_config(
+        data_config, model_config, name="neural_oblivious_decision_ensemble"
+    )
     model.compile(optimizer="adam", loss="mse")
     model.fit(data_train, validation_data=data_valid)
