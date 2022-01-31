@@ -95,3 +95,29 @@ class NeuralObliviousDecisionEnsembleConfig:
         self.N_TREES = n_trees
         self.TREE_DEPTH = tree_depth
         self.THRESHOLD_INIT_BETA = threshold_init_beta
+
+
+class TabNetConfig:
+    def __init__(
+        self,
+        num_outputs,
+        out_activation,
+        feature_dim=16,
+        output_dim=12,
+        num_decision_steps=5,
+        relaxation_factor=1.5,
+        sparsity_coefficient=1e-5,
+        batch_momentum=0.98,
+        virtual_batch_size=None,
+        epsilon=1e-5,
+    ):
+        self.NUM_OUT = num_outputs
+        self.OUT_ACTIVATION = out_activation
+        self.FEATURE_DIM = feature_dim
+        self.OUTPUT_DIM = output_dim
+        self.NUM_DECISION_STEPS = num_decision_steps
+        self.RELAXATION_FACTOR = relaxation_factor
+        self.SPARSITY_COEFFICIENT = sparsity_coefficient
+        self.BATCH_MOMENTUM = batch_momentum
+        self.VIRTUAL_BATCH_SIZE = virtual_batch_size
+        self.EPSILON = epsilon
