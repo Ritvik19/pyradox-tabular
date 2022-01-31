@@ -1,3 +1,6 @@
+import tensorflow as tf
+
+
 class DeepNetworkConfig:
     def __init__(
         self, num_outputs, out_activation, hidden_units, dropout_rate=0.3, use_embeddings=False, embedding_dim=0
@@ -74,3 +77,21 @@ class NeuralDecisionForestConfig:
         self.DEPTH = depth
         self.USED_FEATURES_RATE = used_features_rate
         self.NUM_CLASSES = num_classes
+
+
+class NeuralObliviousDecisionTreeConfig:
+    def __init__(self, n_trees=3, depth=4, units=1, threshold_init_beta=1.0):
+        self.UNITS = units
+        self.N_TREES = n_trees
+        self.DEPTH = depth
+        self.THRESHOLD_INIT_BETA = threshold_init_beta
+
+
+class NeuralObliviousDecisionEnsembleConfig:
+    def __init__(self, units=1, n_layers=1, link=tf.identity, n_trees=3, tree_depth=4, threshold_init_beta=1):
+        self.UNITS = units
+        self.N_LAYERS = n_layers
+        self.LINK = link
+        self.N_TREES = n_trees
+        self.TREE_DEPTH = tree_depth
+        self.THRESHOLD_INIT_BETA = threshold_init_beta
