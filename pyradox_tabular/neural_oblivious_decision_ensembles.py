@@ -155,6 +155,16 @@ class ObliviousDecisionEnsembleBackbone(keras.Model):
 class NeuralObliviousDecisionTree(NetworkInputs):
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         features = cls.encode_inputs(
             inputs,
@@ -176,8 +186,22 @@ class NeuralObliviousDecisionTree(NetworkInputs):
 
 
 class NeuralObliviousDecisionEnsemble(NetworkInputs):
+    """NODE architecture generalizes ensembles of oblivious decision trees, but benefits from both end-to-end
+    gradient-based optimization and the power of multi-layer hierarchical representation learning.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         features = cls.encode_inputs(
             inputs,

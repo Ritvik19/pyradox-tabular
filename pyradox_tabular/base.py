@@ -3,6 +3,8 @@ from tensorflow.keras import layers as L
 
 
 class NetworkInputs:
+    """Base class for tabular network with implementations of input and feature processing layers."""
+
     @staticmethod
     def get_inputs(config):
         return {

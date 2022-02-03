@@ -5,8 +5,30 @@ from .base import NetworkInputs
 
 
 class DeepTabularNetwork(NetworkInputs):
+    """In principle a neural network can approximate any continuous function and piece wise continuous function.
+    However, it is not suitable to approximate arbitrary non-continuous functions as it assumes certain level of
+    continuity in its general form.
+
+    Unlike unstructured data found in nature, structured data with categorical features may not have continuity
+    at all and even if it has it may not be so obvious.
+
+    Deep Tabular Network use the entity embedding method to automatically learn the representation of categorical
+    features in multi-dimensional spaces which reveals the intrinsic continuity of the data and helps neural
+    networks to solve the problem.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         features = cls.encode_inputs(
             inputs,
@@ -32,8 +54,27 @@ class DeepTabularNetwork(NetworkInputs):
 
 
 class WideAndDeepTabularNetwork(NetworkInputs):
+    """The human brain is a sophisticated learning machine, forming rules by memorizing everyday events and
+    generalizing those learnings to apply tothings we haven't seen before. Perhaps more powerfully, memorization
+    also allows us to further refine our generalized rules with exceptions.
+
+    By jointly training a wide linear model (for memorization) alongside a deep neural network (for generalization)
+    Wide and Deep Tabular Networks combine the strengths of both to bring us one step closer to teach computers to
+    learn like humans do.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         wide = cls.encode_inputs(
             inputs,
@@ -65,8 +106,27 @@ class WideAndDeepTabularNetwork(NetworkInputs):
 
 
 class DeepAndCrossTabularNetwork(NetworkInputs):
+    """Feature engineering has been the key to the success of many prediction models. However, the process is
+    nontrivial and often requires manual feature engineering or exhaustive searching. DNNs are able to
+    automatically learn feature interactions; however, they generate all the interactions implicitly, and are not
+    necessarily efficient in learning all types of cross features.
+
+    Deep and Cross Tabular Network explicitly applies feature crossing at each layer, requires no manual feature
+    engineering, and adds negligible extra complexity to the DNN model.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         x0 = cls.encode_inputs(
             inputs,

@@ -265,8 +265,24 @@ class TabNetBackbone(keras.Model):
 
 
 class TabNet(NetworkInputs):
+    """TabNet uses sequential attention to choose which features to reason from at each decision step, enabling
+    interpretability and better learning as the learning capacity is used for the most salient features.
+
+    It employs a single deep learning architecture for feature selection and reasoning.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         features = cls.encode_inputs(
             inputs,

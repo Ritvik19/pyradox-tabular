@@ -71,8 +71,23 @@ class NeuralDecisionForestBackbone(keras.Model):
 
 
 class NeuralDecisionTree(NetworkInputs):
+    """Deep Neural Decision Trees unifies classification trees with the representation learning functionality
+    known from deep convolutional network. These are essentially a stochastic and differentiable decision tree
+    model.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         features = cls.encode_inputs(
             inputs,
@@ -94,8 +109,20 @@ class NeuralDecisionTree(NetworkInputs):
 
 
 class NeuralDecisionForest(NetworkInputs):
+    """A Deep Neural Decision Forest is an bagging ensemble of Deep Neural Decision Trees."""
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         features = cls.encode_inputs(
             inputs,

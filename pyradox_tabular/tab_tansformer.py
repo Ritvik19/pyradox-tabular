@@ -16,8 +16,25 @@ def create_mlp(hidden_units, dropout_rate, activation, normalization_layer, name
 
 
 class TabTransformer(NetworkInputs):
+    """TabTransformer is built upon self-attention based on Transformers. The Transformer layers transform the
+    embeddings of categorical features into robust contextual embeddings to achieve higher prediction accuracy.
+
+    The contextual embeddings learned from TabTransformer are highly robust against both missing and noisy data
+    features, and provide better interpretability.
+    """
+
     @classmethod
     def from_config(cls, data_config, model_config, name):
+        """Create a network from configurations.
+
+        Args:
+            data_config (DataConfig): configurations for data processing.
+            model_config (ModelConfig): configurations for the network.
+            name (str): name of the model
+
+        Returns:
+            keras.Model: desired neural network.
+        """
         inputs = cls.get_inputs(data_config)
         cat_features, num_features = cls.encode_inputs(
             inputs,

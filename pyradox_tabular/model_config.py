@@ -2,8 +2,19 @@ import tensorflow as tf
 
 
 class DeepNetworkConfig:
+    """Configurations for the deep network.
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        hidden_units (list): list of hidden units for each hidden layer.
+        dropout_rate (float, optional): dropout rate, Defaults to 0.3.
+        use_embeddings (bool, optional): whether to use embeddings, Defaults to True.
+        embedding_dim (int, optional): embedding dimension, Defaults to 32.
+    """
+
     def __init__(
-        self, num_outputs, out_activation, hidden_units, dropout_rate=0.3, use_embeddings=False, embedding_dim=0
+        self, num_outputs, out_activation, hidden_units, dropout_rate=0.3, use_embeddings=True, embedding_dim=32
     ):
         self.NUM_OUT = num_outputs
         self.OUT_ACTIVATION = out_activation
@@ -14,6 +25,16 @@ class DeepNetworkConfig:
 
 
 class WideAndDeepNetworkConfig:
+    """Configurations for the wide and deep network.
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        hidden_units (list): list of hidden units for each hidden layer.
+        dropout_rate (float, optional): dropout rate, Defaults to 0.3.
+        embedding_dim (int, optional): embedding dimension, Defaults to 0.
+    """
+
     def __init__(self, num_outputs, out_activation, hidden_units, dropout_rate=0.3, embedding_dim=32):
         self.NUM_OUT = num_outputs
         self.OUT_ACTIVATION = out_activation
@@ -23,6 +44,18 @@ class WideAndDeepNetworkConfig:
 
 
 class DeepAndCrossNetworkConfig:
+    """Configurations for the deep and cross network.
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        hidden_units (list): list of hidden units for each hidden layer.
+        n_cross (int, optional): number of cross features, Defaults to 2.
+        dropout_rate (float, optional): dropout rate, Defaults to 0.3.
+        use_embeddings (bool, optional): whether to use embeddings, Defaults to True.
+        embedding_dim (int, optional): embedding dimension, Defaults to 32.
+    """
+
     def __init__(
         self,
         num_outputs,
@@ -43,6 +76,19 @@ class DeepAndCrossNetworkConfig:
 
 
 class TabTransformerConfig:
+    """Configurations for the tab transformer.
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        num_transformer_blocks (int): number of transformer blocks.
+        num_heads (int): number of heads for each transformer block.
+        mlp_hidden_units_factors (list): list of factors for each hidden layer.
+        use_column_embedding (bool, optional): whether to use column embedding, Defaults to True.
+        embedding_dim (int, optional): embedding dimension, Defaults to 32.
+        dropout_rate (float, optional): dropout rate, Defaults to 0.3.
+    """
+
     def __init__(
         self,
         num_outputs,
@@ -65,6 +111,14 @@ class TabTransformerConfig:
 
 
 class NeuralDecisionTreeConfig:
+    """Configurations for neural decision tree
+
+    Args:
+        depth (int): depth of the tree.
+        used_features_rate (float): fraction of the features to be used.
+        num_classes (int): number of classes.
+    """
+
     def __init__(self, depth, used_features_rate, num_classes):
         self.DEPTH = depth
         self.USED_FEATURES_RATE = used_features_rate
@@ -72,6 +126,15 @@ class NeuralDecisionTreeConfig:
 
 
 class NeuralDecisionForestConfig:
+    """Configurations for neural decision forest
+
+    Args:
+        num_trees (int): number of trees in the forest.
+        depth (int): depth of the tree.
+        used_features_rate (float): fraction of the features to be used.
+        num_classes (int): number of classes.
+    """
+
     def __init__(self, num_trees, depth, used_features_rate, num_classes):
         self.NUM_TREES = num_trees
         self.DEPTH = depth
@@ -80,7 +143,16 @@ class NeuralDecisionForestConfig:
 
 
 class NeuralObliviousDecisionTreeConfig:
-    def __init__(self, n_trees=3, depth=4, units=1, threshold_init_beta=1.0):
+    """Configurations for neural oblivious decision tree
+
+    Args:
+        units (int, optional): Defaults to 1.
+        n_trees (int, optional): Defaults to 3.
+        depth (int, optional): Defaults to 4.
+        threshold_init_beta (float, optional): Defaults to 1.0.
+    """
+
+    def __init__(self, units=1, n_trees=3, depth=4, threshold_init_beta=1.0):
         self.UNITS = units
         self.N_TREES = n_trees
         self.DEPTH = depth
@@ -88,6 +160,17 @@ class NeuralObliviousDecisionTreeConfig:
 
 
 class NeuralObliviousDecisionEnsembleConfig:
+    """Configurations for neural oblivious decision ensemble
+
+    Args:
+        units (int, optional): Defaults to 1.
+        n_layers (int, optional): Defaults to 1.
+        link ([type], optional): Defaults to tf.identity.
+        n_trees (int, optional): Defaults to 3.
+        tree_depth (int, optional): Defaults to 4.
+        threshold_init_beta (int, optional): Defaults to 1.
+    """
+
     def __init__(self, units=1, n_layers=1, link=tf.identity, n_trees=3, tree_depth=4, threshold_init_beta=1):
         self.UNITS = units
         self.N_LAYERS = n_layers
@@ -98,6 +181,27 @@ class NeuralObliviousDecisionEnsembleConfig:
 
 
 class TabNetConfig:
+    """Configurations for tabnet
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        feature_dim (int, optional): dimensionality of the hidden representation in feature transformation block,
+            Defaults to 16.
+        output_dim (int, optional): dimensionality of the outputs of each decision step, which is later mapped
+            to the final output, Defaults to 12.
+        num_decision_steps (int, optional): number of decision steps, Defaults to 5.
+        relaxation_factor (float, optional): relaxation factor that promotes the reuse of each
+            feature at different decision steps. When it is 1, a feature is enforced
+            to be used only at one decision step and as it increases, more
+            flexibility is provided to use a feature at multiple decision steps, Defaults to 1.5.
+        sparsity_coefficient (float, optional): strength of the sparsity regularization, Defaults to 1e-5.
+        batch_momentum (float, optional): momentum for ghost batch normalization, Defaults to 0.98.
+        virtual_batch_size (int, optional): batch size in ghost batch normalization, Defaults to None.
+        epsilon ([type], optional): a small number for numerical stability of the entropy calculations,
+            Defaults to 1e-5.
+    """
+
     def __init__(
         self,
         num_outputs,
