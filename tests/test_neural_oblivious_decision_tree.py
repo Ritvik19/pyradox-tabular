@@ -1,8 +1,8 @@
 import pytest
+from pyradox_tabular.data import DataLoader
 from pyradox_tabular.data_config import DataConfig
 from pyradox_tabular.model_config import NeuralObliviousDecisionTreeConfig
 from pyradox_tabular.nn import NeuralObliviousDecisionTree
-from tensorflow.data import Dataset
 
 
 def test_neural_oblivious_decision_tree():
@@ -27,12 +27,8 @@ def test_neural_oblivious_decision_tree():
         },
     )
     model_config = NeuralObliviousDecisionTreeConfig()
-    data_train = Dataset.from_tensor_slices(
-        ({col: x_train[col].values.tolist() for col in data_config.FEATURE_NAMES}, y_train.values.tolist())
-    ).batch(1024)
-    data_valid = Dataset.from_tensor_slices(
-        ({col: x_valid[col].values.tolist() for col in data_config.FEATURE_NAMES}, y_valid.values.tolist())
-    ).batch(1024)
+    data_train = DataLoader.from_df(x_train, y_train, batch_size=1024)
+    data_valid = DataLoader.from_df(x_valid, y_valid, batch_size=1024)
 
     model = NeuralObliviousDecisionTree.from_config(data_config, model_config, name="neural_oblivious_decision_tree")
     model.compile(optimizer="adam", loss="mse")

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyradox-tabular"
-version = "0.5.1"
+version = "0.5.2"
 description = "State of the Art Neural Networks for Tabular Deep Learning"
 authors = ["Ritvik19 <rastogiritvik99@gmail.com>"]
 readme = "README.md"
