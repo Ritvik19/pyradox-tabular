@@ -225,3 +225,32 @@ class TabNetConfig:
         self.BATCH_MOMENTUM = batch_momentum
         self.VIRTUAL_BATCH_SIZE = virtual_batch_size
         self.EPSILON = epsilon
+
+
+class FeatureTokenizerTransformerConfig:
+    """Configurations for feature tokenizer transformer
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        num_transformer_blocks (int, optional): number of transformer blocks, Defaults to 2.
+        num_heads (int, optional): number of heads in each transformer block, Defaults to 8.
+        embedding_dim (int, optional): dimensionality of the embedding, Defaults to 32.
+        dense_dim (int, optional): dimensionality of the dense layer, Defaults to 16.
+    """
+
+    def __init__(
+        self,
+        num_outputs,
+        out_activation,
+        num_transformer_blocks=2,
+        num_heads=8,
+        embedding_dim=32,
+        dense_dim=16,
+    ):
+        self.NUM_OUT = num_outputs
+        self.OUT_ACTIVATION = out_activation
+        self.NUM_TRANSFORMER_BLOCKS = num_transformer_blocks
+        self.NUM_HEADS = num_heads
+        self.EMBEDDING_DIM = embedding_dim
+        self.DENSE_DIM = dense_dim

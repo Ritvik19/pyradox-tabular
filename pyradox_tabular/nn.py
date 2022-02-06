@@ -10,3 +10,4 @@ from .neural_oblivious_decision_ensembles import (
 )
 from .tab_net import TabNet
 from .tab_tansformer import TabTransformer
+from .feature_tokenizer_transformer import FeatureTokenizerTransformer

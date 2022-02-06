@@ -24,6 +24,7 @@ State of the Art Neural Networks for Tabular Deep Learning
     - [Deep Neural Decision Forest](#deep-neural-decision-forest)
     - [Neural Oblivious Decision Tree](#neural-oblivious-decision-tree)
     - [Neural Oblivious Decision Ensemble](#neural-oblivious-decision-ensemble)
+    - [Feature Tokenizer Transformer](#feature-tokenizer-transformer)
   - [References](#references)
 
 ---
@@ -207,6 +208,23 @@ model.fit(data_train, validation_data=data_valid)
 preds = model.predict(data_test)
 ```
 
+### Feature Tokenizer Transformer
+
+It is a simple adaptation of the Transformer architecture for the tabular domain. In a nutshell, Feature Tokenizer Transformer transforms all features (categorical and numerical) to embeddings and applies a stack of Transformer layers to the embeddings.
+
+Thus, every Transformer layer operates on the feature level of one object.
+
+```python
+from pyradox_tabular.model_config import FeatureTokenizerTransformerConfig
+from pyradox_tabular.nn import FeatureTokenizerTransformer
+
+model_config = FeatureTokenizerTransformerConfig(num_outputs=1, out_activation='sigmoid',    num_transformer_blocks=2, num_heads=8, embedding_dim=32, dense_dim=16, )
+model = FeatureTokenizerTransformer.from_config(data_config, model_config, name="feature_tokenizer_transformer")
+model.compile(optimizer="adam", loss="binary_crossentropy")
+model.fit(data_train, validation_data=data_valid)
+preds = model.predict(data_test)
+```
+
 ---
 
 ## References
@@ -218,3 +236,4 @@ preds = model.predict(data_test)
 - [TabNet: Attentive Interpretable Tabular Learning (2020, December)](https://arxiv.org/pdf/1908.07442.pdf)
 - [Deep Neural Decision Forests (2015, December)](https://ieeexplore.ieee.org/document/7410529)
 - [Neural Oblivious Decision Ensembles for Deep Learning on Tabular Data (2019, September)](https://arxiv.org/pdf/1909.06312.pdf)
+- [Revisiting Deep Learning Models for Tabular Data (2021, June)](https://arxiv.org/abs/2106.11959)
