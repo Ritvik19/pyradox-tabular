@@ -72,7 +72,7 @@ class FeatureTokenizerTransformer(NetworkInputs):
                 dense_dim=model_config.DENSE_DIM,
                 num_heads=model_config.NUM_HEADS,
             )(features)
-
+        features = L.GlobalMaxPooling1D()(features)
         outputs = L.Dense(
             units=model_config.NUM_OUT,
             activation=model_config.OUT_ACTIVATION,

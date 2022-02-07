@@ -218,7 +218,7 @@ Thus, every Transformer layer operates on the feature level of one object.
 from pyradox_tabular.model_config import FeatureTokenizerTransformerConfig
 from pyradox_tabular.nn import FeatureTokenizerTransformer
 
-model_config = FeatureTokenizerTransformerConfig(num_outputs=1, out_activation='sigmoid',    num_transformer_blocks=2, num_heads=8, embedding_dim=32, dense_dim=16, )
+model_config = FeatureTokenizerTransformerConfig(num_outputs=1, out_activation='sigmoid', num_transformer_blocks=2, num_heads=8, embedding_dim=32, dense_dim=16)
 model = FeatureTokenizerTransformer.from_config(data_config, model_config, name="feature_tokenizer_transformer")
 model.compile(optimizer="adam", loss="binary_crossentropy")
 model.fit(data_train, validation_data=data_valid)
