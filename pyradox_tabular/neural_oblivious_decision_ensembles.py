@@ -175,7 +175,7 @@ class NeuralObliviousDecisionTree(NetworkInputs):
             concat_features=True,
         )
         backbone = ObliviousDecisionTreeBackbone(
-            units=model_config.UNITS,
+            units=model_config.NUM_OUT,
             n_trees=model_config.N_TREES,
             depth=model_config.DEPTH,
             threshold_init_beta=model_config.THRESHOLD_INIT_BETA,
@@ -212,7 +212,7 @@ class NeuralObliviousDecisionEnsemble(NetworkInputs):
             concat_features=True,
         )
         backbone = ObliviousDecisionEnsembleBackbone(
-            units=model_config.UNITS,
+            units=model_config.NUM_OUT,
             n_layers=model_config.N_LAYERS,
             n_trees=model_config.N_TREES,
             tree_depth=model_config.TREE_DEPTH,

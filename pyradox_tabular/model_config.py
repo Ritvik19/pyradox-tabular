@@ -146,14 +146,14 @@ class NeuralObliviousDecisionTreeConfig:
     """Configurations for neural oblivious decision tree
 
     Args:
-        units (int, optional): Defaults to 1.
+        num_outputs (int, optional): Defaults to 1.
         n_trees (int, optional): Defaults to 3.
         depth (int, optional): Defaults to 4.
         threshold_init_beta (float, optional): Defaults to 1.0.
     """
 
-    def __init__(self, units=1, n_trees=3, depth=4, threshold_init_beta=1.0):
-        self.UNITS = units
+    def __init__(self, num_outputs=1, n_trees=3, depth=4, threshold_init_beta=1.0):
+        self.NUM_OUT = num_outputs
         self.N_TREES = n_trees
         self.DEPTH = depth
         self.THRESHOLD_INIT_BETA = threshold_init_beta
@@ -163,7 +163,7 @@ class NeuralObliviousDecisionEnsembleConfig:
     """Configurations for neural oblivious decision ensemble
 
     Args:
-        units (int, optional): Defaults to 1.
+        num_outputs (int, optional): Defaults to 1.
         n_layers (int, optional): Defaults to 1.
         link ([type], optional): Defaults to tf.identity.
         n_trees (int, optional): Defaults to 3.
@@ -171,8 +171,8 @@ class NeuralObliviousDecisionEnsembleConfig:
         threshold_init_beta (int, optional): Defaults to 1.
     """
 
-    def __init__(self, units=1, n_layers=1, link=tf.identity, n_trees=3, tree_depth=4, threshold_init_beta=1):
-        self.UNITS = units
+    def __init__(self, num_outputs=1, n_layers=1, link=tf.identity, n_trees=3, tree_depth=4, threshold_init_beta=1):
+        self.NUM_OUT = num_outputs
         self.N_LAYERS = n_layers
         self.LINK = link
         self.N_TREES = n_trees
