@@ -254,3 +254,26 @@ class FeatureTokenizerTransformerConfig:
         self.NUM_HEADS = num_heads
         self.EMBEDDING_DIM = embedding_dim
         self.DENSE_DIM = dense_dim
+
+
+class TabularResNetConfig:
+    """Configurations for the tabular resnet.
+
+    Args:
+        num_outputs (int): number of cells in output layer.
+        out_activation (str): activation function for output layer.
+        hidden_units (list): list of hidden units for each hidden layer.
+        dropout_rate (float, optional): dropout rate, Defaults to 0.3.
+        use_embeddings (bool, optional): whether to use embeddings, Defaults to True.
+        embedding_dim (int, optional): embedding dimension, Defaults to 32.
+    """
+
+    def __init__(
+        self, num_outputs, out_activation, hidden_units, dropout_rate=0.3, use_embeddings=True, embedding_dim=32
+    ):
+        self.NUM_OUT = num_outputs
+        self.OUT_ACTIVATION = out_activation
+        self.HIDDEN_UNITS = hidden_units
+        self.DROPOUT_RATE = dropout_rate
+        self.USE_EMBEDDINGS = use_embeddings
+        self.EMBEDDING_DIM = embedding_dim

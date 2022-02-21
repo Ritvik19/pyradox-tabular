@@ -3,6 +3,7 @@ from .deep_wide_cross import (
     DeepTabularNetwork,
     WideAndDeepTabularNetwork,
 )
+from .feature_tokenizer_transformer import FeatureTokenizerTransformer
 from .neural_decision_forest import NeuralDecisionForest, NeuralDecisionTree
 from .neural_oblivious_decision_ensembles import (
     NeuralObliviousDecisionEnsemble,
@@ -10,4 +11,4 @@ from .neural_oblivious_decision_ensembles import (
 )
 from .tab_net import TabNet
 from .tab_tansformer import TabTransformer
-from .feature_tokenizer_transformer import FeatureTokenizerTransformer
+from .tabular_resnet import TabularResNet

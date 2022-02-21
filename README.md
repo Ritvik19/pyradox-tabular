@@ -25,6 +25,7 @@ State of the Art Neural Networks for Tabular Deep Learning
     - [Neural Oblivious Decision Tree](#neural-oblivious-decision-tree)
     - [Neural Oblivious Decision Ensemble](#neural-oblivious-decision-ensemble)
     - [Feature Tokenizer Transformer](#feature-tokenizer-transformer)
+    - [Tabular ResNet](#tabular-resnet)
   - [References](#references)
 
 ---
@@ -220,6 +221,21 @@ from pyradox_tabular.nn import FeatureTokenizerTransformer
 
 model_config = FeatureTokenizerTransformerConfig(num_outputs=1, out_activation='sigmoid', num_transformer_blocks=2, num_heads=8, embedding_dim=32, dense_dim=16)
 model = FeatureTokenizerTransformer.from_config(data_config, model_config, name="feature_tokenizer_transformer")
+model.compile(optimizer="adam", loss="binary_crossentropy")
+model.fit(data_train, validation_data=data_valid)
+preds = model.predict(data_test)
+```
+
+### Tabular ResNet
+
+Tabular Resnet is a ResNet like architecture containing skip connection but instead of Convolutional Layers, it consists of Linear Layers.
+
+```python
+from pyradox_tabular.model_config import TabularResNetConfig
+from pyradox_tabular.nn import TabularResNet
+
+model_config = TabularResNetConfig(num_outputs=1, out_activation='sigmoid', hidden_units=[64, 64])
+model = TabularResNet.from_config(data_config, model_config, name="deep_network")
 model.compile(optimizer="adam", loss="binary_crossentropy")
 model.fit(data_train, validation_data=data_valid)
 preds = model.predict(data_test)
